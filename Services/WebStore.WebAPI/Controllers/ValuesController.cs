@@ -49,29 +49,29 @@ namespace WebStore.WebAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id });
         }
 
-        ////
-        //[HttpPut("{id")] // PUT -> api/values/5
-        //public IActionResult Replace(int Id,[FromBody] string Value)
-        //{
-        //    if (!_Values.ContainsKey(Id))
-        //        return NotFound();
+        //Редактируем значения
+        [HttpPut("{id}")] // PUT -> api/values/5
+        public IActionResult Replace(int Id, [FromBody] string Value)
+        {
+            if (!_Values.ContainsKey(Id))
+                return NotFound();
 
-        //    _Values[Id]=Value;
+            _Values[Id] = Value;
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         //Удаляем запись
-        //[HttpDelete("{id")] // DELETE -> api/values/5
-        //public IActionResult Delete(int Id)
-        //{
-        //    if (!_Values.ContainsKey(Id))
-        //        return NotFound();
+        [HttpDelete("{id}")] // DELETE -> api/values/5
+        public IActionResult Delete(int Id)
+        {
+            if (!_Values.ContainsKey(Id))
+                return NotFound();
 
-        //    _Values.Remove(Id);
+            _Values.Remove(Id);
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         #endregion
     }
