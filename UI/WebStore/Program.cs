@@ -7,6 +7,7 @@ using WebStore.Domain.Entities.Identity;
 using WebStore.Infrastructure.Conventions;
 using WebStore.Infrastructure.Middleware;
 using WebStore.Interfaces.Services;
+using WebStore.Interfaces.TestAPI;
 using WebStore.Services;
 using WebStore.Services.Services;
 using WebStore.Services.Services.InCookies;
@@ -87,6 +88,9 @@ services.AddScoped<IProductData, SqlProductData>(); // !!! AddScoped !!!
 services.AddScoped<IOrderService, SqlOrderService>();
 services.AddScoped<ICartService, InCookiesCartService>();
 
+//BaseAddress размещён в appsettings.json
+var configuration = builder.Configuration;
+services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
 #endregion
 
 var app = builder.Build(); // Сборка приложения
