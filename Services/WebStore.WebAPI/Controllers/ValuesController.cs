@@ -12,6 +12,7 @@ namespace WebStore.WebAPI.Controllers
             .Select(i => (Id: i, Value: $"Value: {i}"))
             .ToDictionary(v => v.Id, v => v.Value);
 
+        // Статья по ошибкам: https://qastack.ru/programming/40900414/asp-net-core-dependency-injection-error-unable-to-resolve-service-for-type-whil
         //Объявляем поле логгер
         private readonly ILogger<ValuesController> _logger;
 
