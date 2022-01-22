@@ -50,9 +50,9 @@ public abstract class BaseClient
     }
 
     //Синхронный метод
-    protected HttpResponseMessage Delete<T>(string url) => DeleteAsync<T>(url).Result;
+    protected HttpResponseMessage Delete(string url) => DeleteAsync(url).Result;
     //Асинхронный метод
-    protected async Task<HttpResponseMessage> DeleteAsync<T>(string url)
+    protected async Task<HttpResponseMessage> DeleteAsync(string url)
     {
         var response = await Http.DeleteAsync(url).ConfigureAwait(false);
         return response.EnsureSuccessStatusCode();

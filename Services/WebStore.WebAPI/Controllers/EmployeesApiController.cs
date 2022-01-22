@@ -42,8 +42,10 @@ namespace WebStore.WebAPI.Controllers
         [HttpPut]
         public IActionResult Update(Employee employee)
         {
-            _EmployeesData.Edit(employee);
-            return Ok();
+            //_EmployeesData.Edit(employee);
+            //return Ok();
+            var succes = _EmployeesData.Edit(employee);
+            return Ok(succes);
         }
 
         [HttpDelete]
