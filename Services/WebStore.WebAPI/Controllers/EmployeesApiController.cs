@@ -14,7 +14,7 @@ namespace WebStore.WebAPI.Controllers
         public EmployeesApiController(IEmployeesData EmployeesData) => _EmployeesData = EmployeesData;
 
 
-        #region Набор действий со словарём
+        #region Набор действий
 
         [HttpGet]
         public IActionResult Get()

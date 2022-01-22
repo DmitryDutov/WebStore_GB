@@ -1,4 +1,7 @@
-﻿namespace WebStore.WebAPI.Clients.Base;
+﻿using System.Globalization;
+using System.Net.Http.Json;
+
+namespace WebStore.WebAPI.Clients.Base;
 
 public abstract class BaseClient
 {
@@ -11,5 +14,50 @@ public abstract class BaseClient
 
         this.Addres=Addres;
     }
+
+    #region Набор действий
+
+    //Синхронный метод
+    protected T? Get<T>(string url) => GetAsync<T>(url).Result;
+    //Асинхронный метод
+    protected async Task<T?> GetAsync<T>(string url)
+    {
+        var response = await Http.GetAsync(url).ConfigureAwait(false);
+        return await response
+                .EnsureSuccessStatusCode()
+                .Content
+                .ReadFromJsonAsync<T>()
+                .ConfigureAwait(false)
+            ;
+    }
+
+    //Синхронный метод
+    protected HttpResponseMessage Post<T>(string url, T value) => PostAsync<T>(url, value).Result;
+    //Асинхронный метод
+    protected async Task<HttpResponseMessage> PostAsync<T>(string url, T value)
+    {
+        var response = await Http.PutAsJsonAsync(url, value).ConfigureAwait(false);
+        return response.EnsureSuccessStatusCode();
+    }
+
+    //Синхронный метод
+    protected HttpResponseMessage Put<T>(string url, T value) => PutAsync<T>(url, value).Result;
+    //Асинхронный метод
+    protected async Task<HttpResponseMessage> PutAsync<T>(string url, T value)
+    {
+        var response = await Http.PutAsJsonAsync(url, value).ConfigureAwait(false);
+        return response.EnsureSuccessStatusCode();
+    }
+
+    //Синхронный метод
+    protected HttpResponseMessage Delete<T>(string url) => DeleteAsync<T>(url).Result;
+    //Асинхронный метод
+    protected async Task<HttpResponseMessage> DeleteAsync<T>(string url)
+    {
+        var response = await Http.DeleteAsync(url).ConfigureAwait(false);
+        return response.EnsureSuccessStatusCode();
+    }
+
+    #endregion
 }
 
