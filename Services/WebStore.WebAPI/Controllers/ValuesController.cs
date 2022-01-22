@@ -50,7 +50,7 @@ namespace WebStore.WebAPI.Controllers
         }
 
         //Редактируем значения
-        [HttpPut("{id}")] // PUT -> api/values/5
+        [HttpPut("{Id}")] // PUT -> api/values/5
         public IActionResult Replace(int Id, [FromBody] string Value)
         {
             if (!_Values.ContainsKey(Id))
@@ -62,7 +62,7 @@ namespace WebStore.WebAPI.Controllers
         }
 
         //Удаляем запись
-        [HttpDelete("{id}")] // DELETE -> api/values/5
+        [HttpDelete("{Id}")] // DELETE -> api/values/5
         public IActionResult Delete(int Id)
         {
             if (!_Values.ContainsKey(Id))
