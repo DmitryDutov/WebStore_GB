@@ -13,10 +13,10 @@ namespace WebStore.WebAPI.Controllers
             .ToDictionary(v => v.Id, v => v.Value);
 
         //Объявляем поле логгер
-        private readonly ILogger<ValuesController> _logger; //private readonly Logger<ValuesController> _logger; ===> Тут была ошибка!!!!
+        private readonly ILogger<ValuesController> _logger;
 
         //Объявляем конструктор и передаём в него логгер
-        public ValuesController(ILogger<ValuesController> logger) => _logger = logger; // public ValuesController(ILogger<ValuesController> logger) => _logger = logger; ===> Тут была ошибка!!!!
+        public ValuesController(ILogger<ValuesController> logger) => _logger = logger;
 
 
         #region Набор действий со словарём
