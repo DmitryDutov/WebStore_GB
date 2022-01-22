@@ -36,42 +36,42 @@ namespace WebStore.WebAPI.Controllers
 
         //Получаем количество записей
         [HttpGet("count")] // GET-> http://localhost:50101/api/values/count
-        public IActionResult Count()=>Ok(_Values.Count());
+        public IActionResult Count() => Ok(_Values.Count());
 
         //Добавляем новую запись
         //[HttpPost] // POST -> api/values
         [HttpPost("add")] // POST -> api/values/add
-        public IActionResult Add([FromBody]string Value)
+        public IActionResult Add([FromBody] string Value)
         {
             var id = _Values.Count == 0 ? 1 : _Values.Keys.Max() + 1;
-            _Values[id]=Value;
+            _Values[id] = Value;
 
-            return CreatedAtAction(nameof(GetById), new {id});
+            return CreatedAtAction(nameof(GetById), new { id });
         }
 
-        //
-        [HttpPut("{id")] // PUT -> api/values/5
-        public IActionResult Replace(int Id,[FromBody] string Value)
-        {
-            if (!_Values.ContainsKey(Id))
-                return NotFound();
+        ////
+        //[HttpPut("{id")] // PUT -> api/values/5
+        //public IActionResult Replace(int Id,[FromBody] string Value)
+        //{
+        //    if (!_Values.ContainsKey(Id))
+        //        return NotFound();
 
-            _Values[Id]=Value;
+        //    _Values[Id]=Value;
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         //Удаляем запись
-        [HttpDelete("{id")] // DELETE -> api/values/5
-        public IActionResult Delete(int Id)
-        {
-            if (!_Values.ContainsKey(Id))
-                return NotFound();
+        //[HttpDelete("{id")] // DELETE -> api/values/5
+        //public IActionResult Delete(int Id)
+        //{
+        //    if (!_Values.ContainsKey(Id))
+        //        return NotFound();
 
-            _Values.Remove(Id);
+        //    _Values.Remove(Id);
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         #endregion
     }
