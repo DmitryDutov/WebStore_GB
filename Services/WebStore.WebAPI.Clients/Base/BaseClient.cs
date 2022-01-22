@@ -8,6 +8,7 @@ public abstract class BaseClient
     protected BaseClient(HttpClient Client, string Addres)
     {
         Http=Client;
+
         this.Addres=Addres;
     }
 }

@@ -1,8 +1,15 @@
-﻿namespace WebStore.Interfaces.TestAPI;
+﻿using WebStore.WebAPI.Clients.Base;
 
-public class ValuesClient : IValuesService
+namespace WebStore.Interfaces.TestAPI;
+
+public class ValuesClient : BaseClient, IValuesService
 {
-    private HttpClient _Client;
+
+    //Получаем HttpClient снаружи и передаём базовому классу
+    public ValuesClient(HttpClient Client):base(Client, "api/values")
+    {
+
+    }
 
 
 
