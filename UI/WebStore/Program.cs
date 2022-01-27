@@ -94,7 +94,7 @@ services.AddScoped<ICartService, InCookiesCartService>();
 var configuration = builder.Configuration;
 services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
 services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
-services.AddHttpClient<IProductData, ProductsClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
+services.AddHttpClient<IProductData, ProductsClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
 
 #endregion
 

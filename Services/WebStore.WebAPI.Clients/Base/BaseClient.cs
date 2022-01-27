@@ -34,9 +34,9 @@ public abstract class BaseClient
     //Синхронный метод
     protected HttpResponseMessage Post<T>(string url, T value) => PostAsync<T>(url, value).Result;
     //Асинхронный метод
-    protected async Task<HttpResponseMessage> PostAsync<T>(string url, T value)
+    protected async Task<HttpResponseMessage?> PostAsync<T>(string url, T value)
     {
-        var response = await Http.PutAsJsonAsync(url, value).ConfigureAwait(false);
+        var response = await Http.PostAsJsonAsync(url, value).ConfigureAwait(false);
         return response.EnsureSuccessStatusCode();
     }
 
