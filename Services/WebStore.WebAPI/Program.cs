@@ -20,10 +20,10 @@ switch (database_type)
 {
     default: throw new InvalidOperationException($"Тип БД {database_type} не поддерживается");
 
-    case "SqlServer":
-        services.AddDbContext<WebStoreDB>(opt =>
-            opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
-        break;
+    //case "SqlServer":
+    //    services.AddDbContext<WebStoreDB>(opt =>
+    //        opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+    //    break;
 
     case "Sqlite":
         services.AddDbContext<WebStoreDB>(opt => 
