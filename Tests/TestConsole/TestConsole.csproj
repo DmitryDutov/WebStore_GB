@@ -11,4 +11,10 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\WebStore.Services\WebStore.Services.csproj" />
+    <ProjectReference Include="..\..\Services\WebStore.WebAPI.Clients\WebStore.WebAPI.Clients.csproj" />
+    <ProjectReference Include="..\..\Services\WebStore.WebAPI\WebStore.WebAPI.csproj" />
+  </ItemGroup>
+
 </Project>
