@@ -65,7 +65,8 @@ namespace WebStore.WebAPI.Controllers
             return Ok(product.ToDTO());
         }
 
-        [HttpPost]
+
+        [HttpPost("new")]
         //public IActionResult CreateProduct(string Name, int Order, decimal Price, string ImageUrl, string Section, string? Brand = null)
         //{
         //    var product = _ProductData.CreateProduct(Name, Order, Price, ImageUrl, Section, Brand);
