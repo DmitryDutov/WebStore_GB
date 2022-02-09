@@ -93,10 +93,16 @@ services.AddScoped<ICartService, InCookiesCartService>();
 
 //BaseAddress размещён в appsettings.json
 var configuration = builder.Configuration;
-services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
-services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
-services.AddHttpClient<IProductData, ProductsClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
-services.AddHttpClient<IOrderService, OrdersClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
+//services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
+//services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
+//services.AddHttpClient<IProductData, ProductsClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
+//services.AddHttpClient<IOrderService, OrdersClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
+
+services.AddHttpClient("WebAPI", client => client.BaseAddress = new(configuration["WebAPI"]))
+    .AddTypedClient<IValuesService, ValuesClient>()
+    .AddTypedClient<IEmployeesData, EmployeesClient>()
+    .AddTypedClient<IProductData, ProductsClient>()
+    .AddTypedClient<IOrderService, OrdersClient>();
 
 #endregion
 
