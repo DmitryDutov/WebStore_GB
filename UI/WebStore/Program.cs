@@ -13,6 +13,7 @@ using WebStore.Services.Services;
 using WebStore.Services.Services.InCookies;
 using WebStore.Services.Services.InSQL;
 using WebStore.WebAPI.Clients.Employees;
+using WebStore.WebAPI.Clients.Orders;
 using WebStore.WebAPI.Clients.Products;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,16 +31,16 @@ switch (database_type)
 {
     default: throw new InvalidOperationException($"Тип БД {database_type} не поддерживается");
 
-    //case "SqlServer":
-    //    services.AddDbContext<WebStoreDB>(opt =>
-    //        opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
-    //    break;
-
-    case "Sqlite":
-        services.AddDbContext<WebStoreDB>(opt => 
-            opt.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"),
-                o => o.MigrationsAssembly("WebStore.DAL.Sqlite")));
+    case "SqlServer":
+        services.AddDbContext<WebStoreDB>(opt =>
+            opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
         break;
+
+        //case "Sqlite":
+        //    services.AddDbContext<WebStoreDB>(opt => 
+        //        opt.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"),
+        //            o => o.MigrationsAssembly("WebStore.DAL.Sqlite")));
+        //    break;
 }
 
 services.AddTransient<IDbInitializer, DbInitializer>();
@@ -87,7 +88,7 @@ services.ConfigureApplicationCookie(opt =>
 
 //services.AddScoped<IEmployeesData, SqlEmployeesData>();
 //services.AddScoped<IProductData, SqlProductData>(); // !!! AddScoped !!!
-services.AddScoped<IOrderService, SqlOrderService>();
+//services.AddScoped<IOrderService, SqlOrderService>();
 services.AddScoped<ICartService, InCookiesCartService>();
 
 //BaseAddress размещён в appsettings.json
@@ -95,6 +96,7 @@ var configuration = builder.Configuration;
 services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
 services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new (configuration["WebAPI"]));
 services.AddHttpClient<IProductData, ProductsClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
+services.AddHttpClient<IOrderService, OrdersClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
 
 #endregion
 
