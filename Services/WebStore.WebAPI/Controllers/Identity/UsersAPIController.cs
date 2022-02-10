@@ -9,10 +9,4 @@ namespace WebStore.WebAPI.Controllers.Identity
     public class UsersAPIController : ControllerBase
     {
     }
-
-    [ApiController]
-    [Route(WebAPIAdresses.Identity.Roles)]
-    public class RolesAPIController : ControllerBase
-    {
-    }
 }
