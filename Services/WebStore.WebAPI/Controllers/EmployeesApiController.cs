@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain.Entities;
+using WebStore.Interfaces;
 using WebStore.Interfaces.Services;
 
 namespace WebStore.WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/employees")] //заменили стандартный адрес на более удобный
+    [Route(WebAPIAdresses.Employees)]
     public class EmployeesApiController : ControllerBase
     {
         private readonly IEmployeesData _EmployeesData;
