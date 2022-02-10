@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Новая папка\**" />
-    <EmbeddedResource Remove="Новая папка\**" />
-    <None Remove="Новая папка\**" />
+    <ProjectReference Include="..\..\Common\WebStore.Domain\WebStore.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\WebStore.Domain\WebStore.Domain.csproj" />
+    <Folder Include="Services\Identity\" />
   </ItemGroup>
 
 </Project>

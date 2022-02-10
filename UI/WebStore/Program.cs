@@ -45,8 +45,8 @@ switch (database_type)
 
 services.AddTransient<IDbInitializer, DbInitializer>();
 
-services.AddIdentity<User, Role>()
-   .AddEntityFrameworkStores<WebStoreDB>()
+services.AddIdentity<User, Role>() //подключаем систему Identuty + указываем сущности
+   .AddEntityFrameworkStores<WebStoreDB>() //добавляем средство хранения данных
    .AddDefaultTokenProviders();
 
 services.Configure<IdentityOptions>(opt =>
