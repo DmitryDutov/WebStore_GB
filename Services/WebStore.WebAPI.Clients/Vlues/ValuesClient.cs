@@ -7,7 +7,7 @@ public class ValuesClient : BaseClient, IValuesService
 {
 
     //Получаем HttpClient снаружи и передаём базовому классу
-    public ValuesClient(HttpClient Client):base(Client, "api/values")
+    public ValuesClient(HttpClient Client):base(Client, WebAPIAdresses.Values)
     {
 
     }
