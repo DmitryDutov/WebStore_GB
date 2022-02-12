@@ -6,13 +6,13 @@ namespace WebStore.WebAPI.Clients.Base;
 public abstract class BaseClient : IDisposable
 {
     protected HttpClient Http { get; }
-    protected string Addres { get; }
+    protected string Address { get; }
 
     protected BaseClient(HttpClient Client, string Addres)
     {
         Http = Client;
 
-        this.Addres = Addres;
+        this.Address = Addres;
     }
 
     #region Набор действий

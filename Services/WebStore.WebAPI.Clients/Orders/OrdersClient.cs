@@ -17,13 +17,13 @@ public class OrdersClient: BaseClient, IOrderService
 
     public async Task<IEnumerable<Order>> GetUserOrdersAsync(string UserName, CancellationToken Cancel = default)
     {
-        var orders = await GetAsync<IEnumerable<OrderDTO>>($"{Addres}/user/{UserName}").ConfigureAwait(false);
+        var orders = await GetAsync<IEnumerable<OrderDTO>>($"{Address}/user/{UserName}").ConfigureAwait(false);
         return orders!.FromDTO()!;
     }
 
     public async Task<Order?> GetOrderByIdAsync(int Id, CancellationToken Cancel = default)
     {
-        var order = await GetAsync<OrderDTO>($"{Addres}/{Id}").ConfigureAwait(false);
+        var order = await GetAsync<OrderDTO>($"{Address}/{Id}").ConfigureAwait(false);
         return order.FromDTO();
     }
 
@@ -36,7 +36,7 @@ public class OrdersClient: BaseClient, IOrderService
             Order = OrderModel,
         };
 
-        var responce = await PostAsync($"{Addres}/{UserName}", model).ConfigureAwait(false);
+        var responce = await PostAsync($"{Address}/{UserName}", model).ConfigureAwait(false);
         var oreder=await responce
             .EnsureSuccessStatusCode()
             .Content

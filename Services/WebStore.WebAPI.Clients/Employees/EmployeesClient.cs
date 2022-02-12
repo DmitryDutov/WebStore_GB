@@ -14,19 +14,19 @@ public class EmployeesClient:BaseClient, IEmployeesData
 
     public IEnumerable<Employee> GetAll()
     {
-        var employees = Get<IEnumerable<Employee>>(Addres);
+        var employees = Get<IEnumerable<Employee>>(Address);
         return employees!;
     }
 
     public Employee? GetById(int id)
     {
-        var result=Get<Employee>($"{Addres}/{id}");
+        var result=Get<Employee>($"{Address}/{id}");
         return result;
     }
 
     public int Add(Employee employee)
     {
-        var response = Post(Addres, employee);
+        var response = Post(Address, employee);
         var added_employee = response.Content.ReadFromJsonAsync<Employee>().Result;
         if (added_employee is null)
             return -1;
@@ -37,7 +37,7 @@ public class EmployeesClient:BaseClient, IEmployeesData
 
     public bool Edit(Employee employee)
     {
-        var response = Put(Addres, employee);
+        var response = Put(Address, employee);
         var succes = response.EnsureSuccessStatusCode()
             .Content
             .ReadFromJsonAsync<bool>()
@@ -47,7 +47,7 @@ public class EmployeesClient:BaseClient, IEmployeesData
 
     public bool Delete(int id)
     {
-        var response = Delete($"{Addres}/{id}");
+        var response = Delete($"{Address}/{id}");
         var succes = response.IsSuccessStatusCode;
         return succes;
     }
